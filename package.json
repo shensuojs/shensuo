@@ -1,0 +1,20 @@
+{
+  "name": "shensuo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.12.1"
+  },
+  "scripts": {
+    "dev": "ts-node ./test/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.9",
+    "discord-api-types": "0.37.51",
+    "prettier": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.1",
+    "typescript": "^5.1.6"
+  }
+}
