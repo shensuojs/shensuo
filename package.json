@@ -4,14 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^14.12.1"
+    "discord-api-types": "^0.37.52",
+    "heapify": "^0.6.0",
+    "ws": "^8.13.0"
   },
   "scripts": {
     "dev": "ts-node ./test/index.ts"
   },
   "devDependencies": {
     "@types/node": "^20.4.9",
-    "discord-api-types": "0.37.51",
+    "@types/ws": "^8.5.5",
     "prettier": "^3.0.1",
     "ts-node": "^10.9.1",
     "tslib": "^2.6.1",
