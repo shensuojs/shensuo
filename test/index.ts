@@ -1,7 +1,8 @@
 import { Client } from '../src';
 import { GatewayIntentBits } from 'discord-api-types/v10';
+import { TOKEN } from './config.example';
 
-const client = new Client('MTEyODYwMDgyNjc1MjAwODE5Mg.G9j5WU.xeqo3hJI3dv62m-fa8SQWG8aTwU44oTRQou-_E', {
+const client = new Client(TOKEN, {
 	intents: [GatewayIntentBits.Guilds],
 	sockets: 32,
 });
