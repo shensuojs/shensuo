@@ -11,7 +11,7 @@ export interface IWebsocketData {
 export interface IClientOptions {
 	intents: Array<GatewayIntentBits>;
 	presence?: GatewayPresenceUpdateData;
-	sockets?: number;
+	sockets?: number | 'auto';
 }
 
 export interface IClientEvents {

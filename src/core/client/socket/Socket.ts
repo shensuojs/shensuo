@@ -44,8 +44,7 @@ export class Socket extends EventEmitter {
 
 	async #send(data: IWebsocketData) {
 		if (!this.#socket) return Promise.reject(new Error('WEBSOCKET_CONNECTION_NOT_FOUND'));
-		if (!Object.keys(data == null || typeof data !== 'object' ? {} : data).some((k) => ['d', 'op'].includes(k)))
-			return Promise.reject(new Error('INVALID_REQUEST_SENT'));
+		if (data == null || !('d' in data && 'op' in data)) return Promise.reject(new Error('INVALID_REQUEST_SENT'));
 
 		this.#socket.send(JSON.stringify(data));
 
