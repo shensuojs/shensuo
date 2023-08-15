@@ -1,7 +1,6 @@
 import { EventEmitter } from 'events';
 import { SocketManager } from './';
 import { IClientEvents, IClientOptions } from '../';
-import { GatewayIntentBits } from 'discord-api-types/v10';
 
 export declare interface Client {
 	on<K extends keyof IClientEvents>(event: K, listener: (...args: IClientEvents[K]) => void): this;

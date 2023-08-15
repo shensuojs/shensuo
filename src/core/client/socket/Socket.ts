@@ -1,7 +1,7 @@
 import { SocketManager } from './SocketManager';
 import { EventEmitter } from 'events';
 import { RawData, WebSocket } from 'ws';
-import { IWebsocketData, parseIntents } from '../../';
+import { GatewayEventHandlers, IWebsocketData, parseIntents } from '../../';
 import { GatewayDispatchEvents, GatewayOpcodes } from 'discord-api-types/v10';
 
 export class Socket extends EventEmitter {
@@ -138,6 +138,9 @@ export class Socket extends EventEmitter {
 						this.#resumeGatewayUrl = data.d.resume_gateway_url;
 						this.socketManager.client.emit('ready', this.socketManager.client);
 						break;
+					}
+					default: {
+						console.log(GatewayEventHandlers['GUILD_CREATE']); // returns undefined
 					}
 				}
 			}
