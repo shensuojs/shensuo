@@ -2,7 +2,7 @@ import { SocketManager } from './SocketManager';
 import { EventEmitter } from 'events';
 import { RawData, WebSocket } from 'ws';
 import { GatewayEventHandlers, IWebsocketData, parseIntents } from '../../';
-import { GatewayDispatchEvents, GatewayOpcodes } from 'discord-api-types/v10';
+import { GatewayDispatchEvents, GatewayIntentBits, GatewayOpcodes } from 'discord-api-types/v10';
 
 export class Socket extends EventEmitter {
 	public socketManager: SocketManager = null!;
@@ -81,6 +81,12 @@ export class Socket extends EventEmitter {
 
 		this.#debug(`Identifying (Shard: ${this.id})`);
 
+		this.#debug(
+			`Intents Registered - ${this.socketManager.client.options.intents} (sum ${parseIntents(
+				this.socketManager.client.options.intents,
+			)})`,
+		);
+
 		this.#send({
 			op: GatewayOpcodes.Identify,
 			d: {
@@ -140,7 +146,11 @@ export class Socket extends EventEmitter {
 						break;
 					}
 					default: {
-						console.log(GatewayEventHandlers['GUILD_CREATE']); // returns undefined
+						console.log(data.t);
+						GatewayEventHandlers[data.t! as keyof typeof GatewayEventHandlers](
+							this.socketManager.client,
+							data.d,
+						);
 					}
 				}
 			}

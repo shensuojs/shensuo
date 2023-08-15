@@ -1,6 +1,6 @@
-import { MessageCreateHandler, GuildCreateHandler } from '../';
+import { MessageCreateHandler, GuildCreateHandler } from '../client/socket/handlers';
 
 export const GatewayEventHandlers = Object.freeze({
-	MESSAGE_CREATE: GuildCreateHandler,
-	GUILD_CREATE: MessageCreateHandler,
+	MESSAGE_CREATE: MessageCreateHandler,
+	GUILD_CREATE: GuildCreateHandler,
 });

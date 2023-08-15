@@ -1,5 +1,6 @@
 import { GatewayIntentBits, GatewayPresenceUpdateData, GatewayReadyDispatchData } from 'discord-api-types/v10';
 import { Client } from '../';
+import { Message } from '../client/rest/structures/Message';
 
 export interface IWebsocketData {
 	op: number; // used to identify what gateway event is coming in
@@ -17,4 +18,5 @@ export interface IClientOptions {
 export interface IClientEvents {
 	ready: [data: Client];
 	debug: [message: string];
+	messageCreate: [message: Message];
 }
