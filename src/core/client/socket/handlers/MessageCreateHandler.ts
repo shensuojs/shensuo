@@ -1,6 +1,8 @@
 import { GatewayMessageCreateDispatchData } from 'discord-api-types/v10';
 import { Client, Message } from '../../';
 
-export function MessageCreateHandler(client: Client, data: GatewayMessageCreateDispatchData) {
-	client.emit('messageCreate', new Message(data, client));
+export async function MessageCreateHandler(client: Client, data: GatewayMessageCreateDispatchData) {
+	const message = new Message(data, client);
+	await message.init();
+	client.emit('messageCreate', message);
 }

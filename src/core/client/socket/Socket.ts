@@ -2,7 +2,9 @@ import { SocketManager } from './SocketManager';
 import { EventEmitter } from 'events';
 import { RawData, WebSocket } from 'ws';
 import { GatewayEventHandlers, IWebsocketData, parseIntents } from '../../';
-import { GatewayDispatchEvents, GatewayIntentBits, GatewayOpcodes } from 'discord-api-types/v10';
+import { GatewayDispatchEvents, GatewayOpcodes } from 'discord-api-types/v10';
+import { ClientUser } from '../rest/structures/ClientUser';
+import { ReadyHandler } from './handlers/';
 
 export class Socket extends EventEmitter {
 	public socketManager: SocketManager = null!;
@@ -142,11 +144,10 @@ export class Socket extends EventEmitter {
 				switch (data.t) {
 					case GatewayDispatchEvents.Ready: {
 						this.#resumeGatewayUrl = data.d.resume_gateway_url;
-						this.socketManager.client.emit('ready', this.socketManager.client);
+						ReadyHandler(new ClientUser(data.d.user));
 						break;
 					}
 					default: {
-						console.log(data.t);
 						GatewayEventHandlers[data.t! as keyof typeof GatewayEventHandlers](
 							this.socketManager.client,
 							data.d,

@@ -20,3 +20,5 @@ export interface IClientEvents {
 	debug: [message: string];
 	messageCreate: [message: Message];
 }
+
+export interface IBaseChannelData {}

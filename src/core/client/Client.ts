@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { SocketManager } from './';
+import { Request, SocketManager } from './';
 import { IClientEvents, IClientOptions } from '../';
 
 export declare interface Client {
@@ -16,6 +16,7 @@ export class Client extends EventEmitter {
 	public socketManager: SocketManager;
 	public token: string;
 	public options: IClientOptions;
+	public requestManager: Request;
 	constructor(token: string, options: IClientOptions) {
 		super();
 
@@ -24,6 +25,7 @@ export class Client extends EventEmitter {
 		this.options = options;
 
 		this.socketManager = new SocketManager(this);
+		this.requestManager = new Request(this);
 	}
 
 	public async login() {
