@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import { Client, getGatewayBot, Store } from '../../';
 import { Socket } from './Socket';
-import { APIGatewayBotInfo, RESTGetAPIGatewayBotResult } from 'discord-api-types/v10';
+import { APIGatewayBotInfo } from 'discord-api-types/v10';
 import { setTimeout as setPromisedTimeout } from 'node:timers/promises';
 
 export class SocketManager extends EventEmitter {

@@ -8,7 +8,7 @@ const client = new Client(TOKEN, {
 });
 
 client.on('ready', (client) => {
-	// console.log('Logged in');
+	console.log(client);
 });
 
 client.on('messageCreate', (message) => {

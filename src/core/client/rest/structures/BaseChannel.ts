@@ -1,5 +1,6 @@
-import { IBaseChannelData } from '../../../';
-
 export class BaseChannel {
-	constructor(data: IBaseChannelData) {}
+	public data: { id: string; type: number };
+	constructor(data: { id: string; type: number }) {
+		this.data = data;
+	}
 }

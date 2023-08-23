@@ -14,7 +14,7 @@ export class Request {
 		}).then((res) => res.json());
 	}
 
-	async patch(route: string, data: any) {
+	async patch(route: string, data: string) {
 		return await fetch(this.#baseUrl + route, {
 			headers: { Authorization: `Bot ${this.client.token}` },
 			body: JSON.stringify(data),
